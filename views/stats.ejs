@@ -15,7 +15,7 @@
 
 <body>
 
-    <div class="row mt-5">
+    <div class="row mt-2">
         <div class="col-md-12 m-auto">
             <div class="card card-body text-center">
                 <h1>Decoders</h1>
@@ -34,28 +34,85 @@
         </div>
     </div>
 
-    <div class="row mt-5">
+    <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;" class="mt-5">
         <div class="chart-container" style="position: relative; height:20vh; width:35vw">
             <canvas id="myChart1"></canvas>
         </div>
-    
-        <div class="chart-container" style="position: relative; height:20vh; width:35vw">
+
+        <div class="chart-container" style="position: relative; height:20vh; width:30vw">
             <canvas id="myChart2"></canvas>
         </div>
-    
+
     </div>
-   
+
 
 
     <script>
+        const states_data = {
+            'Andaman and Nicobar Islands': 100,
+            'Andhra Pradesh': 200,
+            'Arunachal Pradesh': 45,
+            'Assam': 67,
+            'Bihar': 04,
+            'Chandigarh': 78,
+            'Chhattisgarh': 99,
+            'Dadra and Nagar Haveli': 38,
+            'Daman and Diu': 100,
+            'Delhi': 10,
+            'Goa': 20,
+            'Gujarat': 56,
+            'Haryana': 88,
+            'Himachal Pradesh': 33,
+            'Jammu and Kashmir': 34,
+            'Jharkhand': 29,
+            'Karnataka': 74,
+            'Kerala': 5,
+            'Ladakh': 9,
+            'Lakshadweep': 10,
+            'Madhya Pradesh': 5,
+            'Maharashtra': 7,
+            'Manipur': 20,
+            'Meghalaya': 35,
+            'Mizoram': 39,
+            'Nagaland': 10,
+            'Odisha': 19,
+            'Puducherry': 29,
+            'Punjab': 10,
+            'Rajasthan': 42,
+            'Sikkim': 11,
+            'Tamil Nadu': 20,
+            'Telangana': 100,
+            'Tripura': 18,
+            'Uttar Pradesh': 29,
+            'Uttarakhand': 12,
+            'West Bengal': 19,
+        };
+
+        const categories_data = {
+            'primary': 1006,
+            'TGT': 7800,
+            'PGT': 4759
+        }
+
+        let states = [], population = [], categories = [], cat_population = []
+        for (const state in states_data) {
+            states.push(state)
+            population.push(states_data[state])
+        }
+
+        for (const category in categories_data) {
+           categories.push(category)
+           cat_population.push(categories_data[category])
+        }
+
         const ctx1 = document.getElementById('myChart1').getContext('2d');
         const myChart1 = new Chart(ctx1, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: states,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '# of teachers',
+                    data: population,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -72,10 +129,11 @@
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 0.5
                 }]
             },
             options: {
+                indexAxis: 'y',
                 scales: {
                     y: {
                         beginAtZero: true
@@ -86,27 +144,20 @@
 
         const ctx2 = document.getElementById('myChart2').getContext('2d');
         const myChart2 = new Chart(ctx2, {
-            type: 'bar',
+            type: 'pie',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: categories,
                 datasets: [{
                     label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: cat_population,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1
                 }]

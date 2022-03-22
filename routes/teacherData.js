@@ -2,6 +2,7 @@ const express = require("express");
 const router1 = express.Router();
 const TeacherData = require("../models/Teacher");
 
+router1.get("/updateData", (req, res) => res.render("teacherData"));
 router1.get("/getData", async (req, res) => {
   try {
     const data = await TeacherData.find();

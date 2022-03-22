@@ -15,16 +15,12 @@
 
 <body>
 
-    <div class="row mt-2">
+    <div class="row mt-4">
         <div class="col-md-12 m-auto">
             <div class="card card-body text-center">
                 <h1>Decoders</h1>
                 <p> A one stop platform to track the journey of teachers from recruitment to entire service duration.
                 </p>
-
-                <div class="col-md-10 m-auto">
-                    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-                </div>
 
                 <div class="col-md-3 m-auto">
                     <a href="/welcome-screen" class="btn btn-primary btn-block mb-2">Sign in or register</a>
@@ -34,17 +30,20 @@
         </div>
     </div>
 
-    <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;" class="mt-5">
-        <div class="chart-container" style="position: relative; height:20vh; width:35vw">
-            <canvas id="myChart1"></canvas>
-        </div>
+    <div class="row mt-4">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+                <div class="chart-container" width="400" height="400">
+                    <canvas id="myChart1"></canvas>
+                </div>
 
-        <div class="chart-container" style="position: relative; height:20vh; width:30vw">
-            <canvas id="myChart2"></canvas>
+            </div>
         </div>
-
     </div>
 
+    <div class="chart-container" style="height:10vh; width:20vw; margin: 30px auto">
+        <canvas id="myChart2"></canvas>
+    </div>
 
 
     <script>
@@ -101,8 +100,8 @@
         }
 
         for (const category in categories_data) {
-           categories.push(category)
-           cat_population.push(categories_data[category])
+            categories.push(category)
+            cat_population.push(categories_data[category])
         }
 
         const ctx1 = document.getElementById('myChart1').getContext('2d');
@@ -133,7 +132,7 @@
                 }]
             },
             options: {
-                indexAxis: 'y',
+                // indexAxis: 'y',
                 scales: {
                     y: {
                         beginAtZero: true
